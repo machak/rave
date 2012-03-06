@@ -24,28 +24,31 @@
 
 <rave:header pageTitle="${pagetitle}"/>
 
-<rave:admin_tabsheader/>
+<div class="clearfix"></div>
+
+<div class="container-fluid">
+    <div class="container">
+        <rave:admin_tabsheader/>
+    </div>
+    <div class="container"><h2><fmt:message key="admin.category.shortTitle"/></h2></div>
+    <article class="span12">
+        <%--@elvariable id="actionresult" type="java.lang.String"--%>
+        <c:if test="${actionresult eq 'delete' or actionresult eq 'update' or actionresult eq 'create'}">
+            <div class="alert alert-info">
+                <fmt:message key="admin.categoryDetail.action.${actionresult}.success"/>
+            </div>
+        </c:if>
 
 
-<article class="row-fluid">
-    <%--@elvariable id="actionresult" type="java.lang.String"--%>
-    <c:if test="${actionresult eq 'delete' or actionresult eq 'update' or actionresult eq 'create'}">
-        <div class="alert-message success">
-            <fmt:message key="admin.categoryDetail.action.${actionresult}.success"/>
-        </div>
-    </c:if>
-    <h2><fmt:message key="admin.category.shortTitle"/></h2>
 
-
-    <div class="span6">
-        <table class="datatable categoryTable">
+        <table class="table table-striped table-bordered table-condensed">
             <thead>
             <tr>
-                <th class="largetextcell"><fmt:message key="admin.categoryData.text"/></th>
-                <th class="textcell"><fmt:message key="admin.categoryData.createdBy"/></th>
-                <th class="textcell"><fmt:message key="admin.categoryData.createdDate"/></th>
-                <th class="textcell"><fmt:message key="admin.categoryData.modifiedBy"/></th>
-                <th class="textcell"><fmt:message key="admin.categoryData.modifiedDate"/></th>
+                <th><fmt:message key="admin.categoryData.text"/></th>
+                <th><fmt:message key="admin.categoryData.createdBy"/></th>
+                <th><fmt:message key="admin.categoryData.createdDate"/></th>
+                <th><fmt:message key="admin.categoryData.modifiedBy"/></th>
+                <th><fmt:message key="admin.categoryData.modifiedDate"/></th>
             </tr>
             </thead>
             <tbody>
@@ -53,19 +56,19 @@
                 <spring:url value="/app/admin/category/edit?id=${category.entityId}" var="detaillink"/>
 
                 <tr data-detaillink="${detaillink}">
-                    <td class="largetextcell">
+                    <td>
                         <c:out value="${category.text}"/>
                     </td>
-                    <td class="textcell">
+                    <td>
                         <c:out value="${category.createdUser.username}"/>
                     </td>
-                    <td class="textcell">
+                    <td>
                         <c:out value="${category.createdDate}"/>
                     </td>
-                    <td class="textcell">
+                    <td>
                         <c:out value="${category.lastModifiedUser.username}"/>
                     </td>
-                    <td class="textcell">
+                    <td>
                         <c:out value="${category.lastModifiedDate}"/>
                     </td>
                 </tr>
@@ -73,9 +76,9 @@
             </tbody>
         </table>
 
-    </div>
 
-    <div class="span4">
+    </article>
+    <div class="span6">
         <form:form cssClass="form-horizontal well" commandName="category" action="category/create" method="POST">
             <form:errors cssClass="error" element="p"/>
             <fieldset>
@@ -95,9 +98,10 @@
                 </div>
 
             </fieldset>
-        </form:form></div>
-</article>
+        </form:form>
+    </div>
 </div>
+
 
 <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js"></script>
 <script src="<spring:url value="/script/rave_admin.js"/>"></script>
