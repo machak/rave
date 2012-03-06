@@ -54,9 +54,10 @@ under the License.
             <c:out value="${portalSettings['titleSuffix'].value}"/>
         </c:if>
     </title>
-    <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.13/themes/base/jquery-ui.css"/>
+    <%--<link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.13/themes/base/jquery-ui.css"/>--%>
     <link rel="stylesheet" href="<c:url value="/css/default.css" />"/>
     <link rel="stylesheet" href="<c:url value="/css/bootstrap/css/bootstrap.css" />"/>
+    <link rel="stylesheet" href="<c:url value="/css/rave.css" />"/>
     <rave:custom_css/>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
