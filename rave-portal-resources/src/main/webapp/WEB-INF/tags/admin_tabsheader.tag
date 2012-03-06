@@ -20,32 +20,25 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setBundle basename="messages"/>
-<div id="tabsHeader">
+<%--@elvariable id="tabs" type="org.apache.rave.portal.web.model.NavigationMenu"--%>
+<c:if test="${not empty tabs}">
     <nav>
-        <%--@elvariable id="tabs" type="org.apache.rave.portal.web.model.NavigationMenu"--%>
-        <c:if test="${not empty tabs}">
-            <ul id="tabs" class="rave-ui-tabs">
-                <c:forEach items="${tabs.navigationItems}" var="navItem">
-                    <c:choose>
-                        <c:when test="${navItem.selected}">
-                            <li class="rave-ui-tab rave-ui-tab-selected">
-                                <div class="page-title">
-                                    <a href="<spring:url value="${navItem.url}"/>"><fmt:message
-                                            key="${navItem.name}"/></a>
-                                </div>
-                            </li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="rave-ui-tab">
-                                <div class="page-title">
-                                    <a href="<spring:url value="${navItem.url}"/>"><fmt:message
-                                            key="${navItem.name}"/></a>
-                                </div>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-            </ul>
-        </c:if>
+        <ul class="nav nav-tabs">
+            <c:forEach items="${tabs.navigationItems}" var="navItem">
+                <c:choose>
+                    <c:when test="${navItem.selected}">
+                        <li class="active">
+                            <a href="<spring:url value="${navItem.url}"/>"><fmt:message key="${navItem.name}"/></a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                            <a href="<spring:url value="${navItem.url}"/>"><fmt:message key="${navItem.name}"/></a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </ul>
     </nav>
-</div>
+</c:if>
+

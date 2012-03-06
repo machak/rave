@@ -21,49 +21,23 @@
 <fmt:setBundle basename="messages"/>
 
 <fmt:message key="${pageTitleKey}" var="pagetitle"/>
+
 <rave:header pageTitle="${pagetitle}"/>
+
 <rave:admin_tabsheader/>
-<div class="pageContent">
-    <article class="admincontent">
-        <%--@elvariable id="actionresult" type="java.lang.String"--%>
-        <c:if test="${actionresult eq 'delete' or actionresult eq 'update' or actionresult eq 'create'}">
-            <div class="alert-message success">
-                <p>
-                    <fmt:message key="admin.categoryDetail.action.${actionresult}.success"/>
-                </p>
-            </div>
-        </c:if>
 
-       <h2><fmt:message key="admin.category.shortTitle"/></h2>
 
-        <div class="rightcolumn">
-            <section class="formbox">
-                <h3><fmt:message key="admin.category.create"/></h3>
-                <form:form id="createCategoryForm" commandName="category" action="category/create" method="POST">
-                    <form:errors cssClass="error" element="p"/>
-                    <fieldset>
-                        <input type="hidden" name="token" value="<c:out value="${tokencheck}"/>"/>
-
-                        <p>
-                            <label for="text"><fmt:message
-                                    key="admin.categoryDetail.label.text"/></label>
-                            <form:input id="text" path="text" required="required"  autofocus="autofocus"/>
-                            <form:errors path="text" cssClass="error"/>
-                        </p>
-                    </fieldset>
-                    <fieldset>
-                        <p>
-                            <fmt:message key="admin.category.create" var="createCategoryMsg"/>
-			    <input type="submit" value="${createCategoryMsg}"/>
-                        </p>
-                    </fieldset>
-                </form:form>
-            </section>
+<article class="row-fluid">
+    <%--@elvariable id="actionresult" type="java.lang.String"--%>
+    <c:if test="${actionresult eq 'delete' or actionresult eq 'update' or actionresult eq 'create'}">
+        <div class="alert-message success">
+            <fmt:message key="admin.categoryDetail.action.${actionresult}.success"/>
         </div>
+    </c:if>
+    <h2><fmt:message key="admin.category.shortTitle"/></h2>
 
 
-
-        <div class="leftcolumn">
+    <div class="span6">
         <table class="datatable categoryTable">
             <thead>
             <tr>
@@ -99,11 +73,34 @@
             </tbody>
         </table>
 
-        </div>
-    </article>
+    </div>
+
+    <div class="span4">
+        <form:form cssClass="form-horizontal well" commandName="category" action="category/create" method="POST">
+            <form:errors cssClass="error" element="p"/>
+            <fieldset>
+                <legend><fmt:message key="admin.category.create"/></legend>
+                <input type="hidden" name="token" value="<c:out value="${tokencheck}"/>"/>
+                <div class="control-group">
+                    <label class="control-label" for="text"><fmt:message key="admin.categoryDetail.label.text"/></label>
+                    <div class="controls">
+                        <form:input id="text" path="text" required="required" autofocus="autofocus"/>
+                        <form:errors path="text" cssClass="error"/></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <fmt:message key="admin.category.create" var="createCategoryMsg"/>
+                <div class="controls">
+                    <button class="btn btn-primary" type="submit" value="${createCategoryMsg}">${createCategoryMsg}</button>
+                </div>
+
+            </fieldset>
+        </form:form></div>
+</article>
 </div>
+
 <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js"></script>
 <script src="<spring:url value="/script/rave_admin.js"/>"></script>
-<script>$(function() {
-rave.admin.initAdminUi();
+<script>$(function () {
+    rave.admin.initAdminUi();
 });</script>
