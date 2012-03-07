@@ -35,6 +35,9 @@
                 </p>
             </div>
         </c:if>
+        <c:if test="${not empty message}">
+            <div class="alert-message success"><p>${message}</p></div>
+        </c:if>
 
 
 
