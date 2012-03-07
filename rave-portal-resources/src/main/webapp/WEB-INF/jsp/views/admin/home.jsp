@@ -30,8 +30,5 @@
     <article class="container">
         <h2><fmt:message key="admin.home.subtitle"/></h2>
         <fmt:message key="admin.home.intro"/>
-        <div class="clear-float">
-
-        </div>
     </article>
 </div>
