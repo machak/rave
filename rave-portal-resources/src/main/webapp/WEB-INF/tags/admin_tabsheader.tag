@@ -23,22 +23,24 @@
 <%--@elvariable id="tabs" type="org.apache.rave.portal.web.model.NavigationMenu"--%>
 <c:if test="${not empty tabs}">
     <nav>
-        <ul class="nav nav-tabs">
-            <c:forEach items="${tabs.navigationItems}" var="navItem">
-                <c:choose>
-                    <c:when test="${navItem.selected}">
-                        <li class="active">
-                            <a href="<spring:url value="${navItem.url}"/>"><fmt:message key="${navItem.name}"/></a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li>
-                            <a href="<spring:url value="${navItem.url}"/>"><fmt:message key="${navItem.name}"/></a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
-        </ul>
+        <div class="tabbable tabs-left">
+            <ul class="nav nav-tabs">
+                <c:forEach items="${tabs.navigationItems}" var="navItem">
+                    <c:choose>
+                        <c:when test="${navItem.selected}">
+                            <li class="active">
+                                <a href="<spring:url value="${navItem.url}"/>"><fmt:message key="${navItem.name}"/></a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>
+                                <a href="<spring:url value="${navItem.url}"/>"><fmt:message key="${navItem.name}"/></a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </ul>
+        </div>
     </nav>
 </c:if>
 

@@ -23,7 +23,7 @@
 <fmt:message key="${pageTitleKey}" var="pagetitle"/>
 <rave:header pageTitle="${pagetitle}"/>
 <div class="container-fluid">
-    <div class="container">
+    <div class="span3">
         <rave:admin_tabsheader/>
     </div>
     <article class="span12">
@@ -39,12 +39,12 @@
         <rave:admin_paging/>
 
         <c:if test="${searchResult.totalResults > 0}">
-            <table class="datatable widgetstable">
+            <table class="table table-striped table-bordered table-condensed">
                 <thead>
                 <tr>
-                    <th class="largetextcell"><fmt:message key="widget.title"/></th>
-                    <th class="textcell"><fmt:message key="widget.type"/></th>
-                    <th class="textcell"><fmt:message key="widget.widgetStatus"/></th>
+                    <th><fmt:message key="widget.title"/></th>
+                    <th><fmt:message key="widget.type"/></th>
+                    <th><fmt:message key="widget.widgetStatus"/></th>
                 </tr>
                 </thead>
                 <tbody>

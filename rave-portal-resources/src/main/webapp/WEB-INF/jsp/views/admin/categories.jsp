@@ -24,19 +24,17 @@
 
 <rave:header pageTitle="${pagetitle}"/>
 <div class="container-fluid">
-    <div class="container">
+    <div class="span2">
         <rave:admin_tabsheader/>
     </div>
-    <div class="container"><h2><fmt:message key="admin.category.shortTitle"/></h2></div>
-    <article class="span12">
+    <article class="span6">
+        <h2><fmt:message key="admin.category.shortTitle"/></h2>
         <%--@elvariable id="actionresult" type="java.lang.String"--%>
         <c:if test="${actionresult eq 'delete' or actionresult eq 'update' or actionresult eq 'create'}">
             <div class="alert alert-info">
                 <fmt:message key="admin.categoryDetail.action.${actionresult}.success"/>
             </div>
         </c:if>
-
-
 
         <table class="table table-striped table-bordered table-condensed">
             <thead>
@@ -54,7 +52,7 @@
 
                 <tr data-detaillink="${detaillink}">
                     <td>
-                        <c:out value="${category.text}"/>
+                        <a href="${detaillink}"><c:out value="${category.text}"/></a>
                     </td>
                     <td>
                         <c:out value="${category.createdUser.username}"/>
@@ -75,8 +73,8 @@
 
 
     </article>
-    <div class="span6">
-        <form:form cssClass="form-horizontal well" commandName="category" action="category/create" method="POST">
+    <div class="span4">
+        <form:form cssClass="form-horizontal" commandName="category" action="category/create" method="POST">
             <form:errors cssClass="error" element="p"/>
             <fieldset>
                 <legend><fmt:message key="admin.category.create"/></legend>
@@ -84,7 +82,7 @@
                 <div class="control-group">
                     <label class="control-label" for="text"><fmt:message key="admin.categoryDetail.label.text"/></label>
                     <div class="controls">
-                        <form:input id="text" path="text" required="required" autofocus="autofocus"/>
+                        <form:input cssClass="input-medium" id="text" path="text" required="required" autofocus="autofocus"/>
                         <form:errors path="text" cssClass="error"/></div>
                 </div>
             </fieldset>

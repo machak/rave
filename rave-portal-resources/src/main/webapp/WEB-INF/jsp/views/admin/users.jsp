@@ -24,7 +24,7 @@
 <fmt:message key="${pageTitleKey}" var="pagetitle"/>
 <rave:header pageTitle="${pagetitle}"/>
 <div class="container-fluid">
-    <div class="container">
+    <div class="span3">
         <rave:admin_tabsheader/>
     </div>
     <article class="span12">

@@ -22,23 +22,24 @@
 
 <fmt:message key="${pageTitleKey}" var="pagetitle"/>
 <rave:header pageTitle="${pagetitle}"/>
-<rave:admin_tabsheader/>
-<div class="pageContent">
-    <article class="admincontent">
+
+<div class="container-fluid">
+    <div class="span3">
+        <rave:admin_tabsheader/>
+    </div>
+    <article class="span12">
         <%--@elvariable id="actionresult" type="java.lang.String"--%>
         <c:if test="${actionresult eq 'delete' or actionresult eq 'update'}">
-            <div class="alert-message success">
-                <p>
-                    <fmt:message key="admin.preferencedetail.action.${actionresult}.success"/>
-                </p>
+            <div class="alert alert-info">
+                <fmt:message key="admin.preferencedetail.action.${actionresult}.success"/>
+
             </div>
         </c:if>
 
         <h2><fmt:message key="admin.preferences.shorttitle"/></h2>
 
         <spring:url value="/app/admin/preferencedetail/edit" var="detaillink"/>
-
-            <%--@elvariable id="preferenceMap" type="java.util.Map<java.lang.String, org.apache.rave.portal.model.PortalPreference>"--%>
+        <%--@elvariable id="preferenceMap" type="java.util.Map<java.lang.String, org.apache.rave.portal.model.PortalPreference>"--%>
         <c:choose>
             <c:when test="${fn:length(preferenceMap) eq 0}">
                 <a href="<c:out value="${detaillink}"/>"><fmt:message key="admin.preferences.edit"/></a>
@@ -70,6 +71,6 @@
 </div>
 <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js"></script>
 <script src="<spring:url value="/script/rave_admin.js"/>"></script>
-<script>$(function() {
+<script>$(function () {
     rave.admin.initAdminUi();
 });</script>

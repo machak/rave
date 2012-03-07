@@ -24,10 +24,10 @@
 <rave:header pageTitle="${pagetitle}"/>
 
 <div class="container-fluid">
-    <div class="container">
+    <div class="span2">
         <rave:admin_tabsheader/>
     </div>
-    <article class="container">
+    <article class="span8">
         <h2><fmt:message key="admin.home.subtitle"/></h2>
         <fmt:message key="admin.home.intro"/>
     </article>
