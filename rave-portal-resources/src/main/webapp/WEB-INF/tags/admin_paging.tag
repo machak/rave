@@ -37,7 +37,7 @@ under the License.
             <c:forEach var="i" begin="1" end="${searchResult.numberOfPages}">
                 <c:choose>
                     <c:when test="${i eq searchResult.currentPage}">
-                        <li><a class="active" href="#">${i}</a></li>
+                        <li class="active"><a href="#">${i}</a></li>
                     </c:when>
                     <c:otherwise>
                         <c:url var="pageUrl" value="">
