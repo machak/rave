@@ -73,8 +73,8 @@
     </c:choose>
 </c:set>
 
-<%--  TODO mm: create spacing--%>
-<div class="container-fluid" style="margin-top: 50px;">
+
+<div class="container-fluid navbar-spacer">
     <nav>
         <ul class="nav nav-tabs">
             <c:forEach var="userPage" items="${pages}">
