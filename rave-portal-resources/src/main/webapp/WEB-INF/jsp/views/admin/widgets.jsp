@@ -71,15 +71,17 @@
                        value="<c:out value="${searchTerm}"/>"/>
                 <fmt:message key="page.store.search.button" var="searchButtonText"/>
                 <button class="btn btn-primary" type="submit" value="${searchButtonText}">${searchButtonText}</button>
-                <label for="widgettype" class="hidden"><fmt:message key="widget.type"/></label>
-                <select name="widgettype" id="widgettype">
-                    <option value=""><fmt:message key="admin.widgets.search.choosetype"/></option>
-                    <option value="OpenSocial"
-                            <c:if test="${selectedWidgetType eq 'OpenSocial'}"> selected="selected"</c:if>>
-                        <fmt:message key="widget.type.OpenSocial"/></option>
-                    <option value="W3C" <c:if test="${selectedWidgetType eq 'W3C'}"> selected="selected"</c:if>>
-                        <fmt:message key="widget.type.W3C"/></option>
-                </select>
+                <div class="control-group"></div>
+                <div class="control-group">
+                    <label for="widgettype" class="hidden"><fmt:message key="widget.type"/></label>
+                    <select name="widgettype" id="widgettype">
+                        <option value=""><fmt:message key="admin.widgets.search.choosetype"/></option>
+                        <option value="OpenSocial"
+                                <c:if test="${selectedWidgetType eq 'OpenSocial'}"> selected="selected"</c:if>>
+                            <fmt:message key="widget.type.OpenSocial"/></option>
+                        <option value="W3C" <c:if test="${selectedWidgetType eq 'W3C'}"> selected="selected"</c:if>>
+                            <fmt:message key="widget.type.W3C"/></option>
+                    </select></div>
                 <label for="widgetstatus" class="hidden"><fmt:message key="widget.widgetStatus"/></label>
                 <select name="widgetstatus" id="widgetstatus">
                     <option value=""><fmt:message key="admin.widgets.search.choosestatus"/></option>

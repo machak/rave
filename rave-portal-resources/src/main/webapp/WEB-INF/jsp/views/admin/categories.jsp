@@ -27,7 +27,7 @@
     <div class="span2">
         <rave:admin_tabsheader/>
     </div>
-    <article class="span6">
+    <article class="span8">
         <h2><fmt:message key="admin.category.shortTitle"/></h2>
         <%--@elvariable id="actionresult" type="java.lang.String"--%>
         <c:if test="${actionresult eq 'delete' or actionresult eq 'update' or actionresult eq 'create'}">
