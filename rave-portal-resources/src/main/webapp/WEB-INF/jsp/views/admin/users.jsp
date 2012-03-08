@@ -57,7 +57,7 @@
                 <c:forEach var="user" items="${searchResult.resultSet}">
                     <spring:url value="/app/admin/userdetail/${user.entityId}" var="detaillink"/>
                     <tr data-detaillink="${detaillink}">
-                        <td><c:out value="${user.username}"/></td>
+                        <td><a href="${detaillink}"><c:out value="${user.username}"/></a></td>
                         <td><c:out value="${user.email}"/></td>
                         <td>${user.enabled}</td>
                     </tr>
@@ -70,7 +70,7 @@
 
     </article>
     <div class="span6">
-            <a href="<spring:url value="/app/admin/adduser"/>"><fmt:message key="admin.users.add"/></a>
+            <a class="btn btn-success" href="<spring:url value="/app/admin/adduser"/>"><fmt:message key="admin.users.add"/></a>
 
                 <form class="form-horizontal" action="<spring:url value="/app/admin/users/search"/>" method="get">
                     <fieldset>
@@ -81,7 +81,7 @@
                     </fieldset>
                 </form>
             <c:if test="${not empty searchTerm}">
-                <a href="<spring:url value="/app/admin/users"/>"><fmt:message key="admin.clearsearch"/></a>
+                <a class="btn btn-success" href="<spring:url value="/app/admin/users"/>"><fmt:message key="admin.clearsearch"/></a>
             </c:if>
 
     </div>
