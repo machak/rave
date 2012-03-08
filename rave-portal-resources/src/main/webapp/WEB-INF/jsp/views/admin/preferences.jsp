@@ -32,7 +32,6 @@
         <c:if test="${actionresult eq 'delete' or actionresult eq 'update'}">
             <div class="alert alert-info">
                 <fmt:message key="admin.preferencedetail.action.${actionresult}.success"/>
-
             </div>
         </c:if>
 
@@ -42,18 +41,18 @@
         <%--@elvariable id="preferenceMap" type="java.util.Map<java.lang.String, org.apache.rave.portal.model.PortalPreference>"--%>
         <c:choose>
             <c:when test="${fn:length(preferenceMap) eq 0}">
-                <a href="<c:out value="${detaillink}"/>"><fmt:message key="admin.preferences.edit"/></a>
+                <a class="btn btn-primary" href="<c:out value="${detaillink}"/>"><fmt:message key="admin.preferences.edit"/></a>
             </c:when>
             <c:otherwise>
-                <table class="datatable preferencestable">
+                <table class="table table-striped table-bordered table-condensed">
                     <tbody>
                     <c:forEach items="${preferenceMap}" var="entry">
                         <c:set value="${entry.value}" var="portalPreference"/>
                         <tr data-detaillink="<c:out value="${detaillink}"/>">
-                            <th scope="row" class="largetextcell">
-                                <fmt:message key="admin.preferencedetail.${portalPreference.key}"/>
+                            <th scope="row">
+                                <a href="${detaillink}"><fmt:message key="admin.preferencedetail.${portalPreference.key}"/></a>
                             </th>
-                            <td class="largetextcell">
+                            <td>
                                 <ul>
                                     <c:forEach items="${portalPreference.values}" var="value">
                                         <li><c:out value="${value}"/></li>
