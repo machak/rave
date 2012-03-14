@@ -26,7 +26,8 @@ under the License.
     <tiles:importAttribute name="pageTitleKey" scope="request"/>
 
     <tiles:putAttribute name="body">
-        <div id="content">
+        <%@ include file="/WEB-INF/jsp/views/includes/login-navbar.jsp" %>
+        <div class="container navbar-spacer">
             <h1>${pagetitle}</h1>
             
             <!-- Login information (required) -->

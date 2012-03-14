@@ -26,9 +26,10 @@
     <tiles:importAttribute name="pageTitleKey" scope="request"/>
 
     <tiles:putAttribute name="body">
-        <div id="content">
+        <%@ include file="/WEB-INF/jsp/views/includes/login-navbar.jsp" %>
+        <div class="container navbar-spacer">
             <h1><fmt:message key="page.changepassword.title"/></h1>
-            <form:form commandName="newUser" action="changepassword" method="post">
+            <form:form cssClass="form-horizontal well" commandName="newUser" action="changepassword" method="post">
                 <fieldset>
                     <p><fmt:message key="form.all.fields.required"/></p>
                     <form:hidden path="forgotPasswordHash"/>

@@ -26,7 +26,11 @@
     <tiles:importAttribute name="pageTitleKey" scope="request"/>
 
     <tiles:putAttribute name="body">
-        <div class="container">
+
+
+        <%@ include file="/WEB-INF/jsp/views/includes/login-navbar.jsp" %>
+
+        <div class="container navbar-spacer">
             <c:if test="${not empty message}">
                 <div class="alert alert-info">${message}</div>
             </c:if>
@@ -114,56 +118,6 @@
 
                     </form>
                 </div>
-            </div>
-            <div class="row">
-                    <%--
-                    //############################################
-                    // PASSWORD REMINDER
-                    //############################################
-                    --%>
-
-                <form class="form-horizontal well" action="<c:url value="/app/newpassword"/>" method="get">
-                    <fieldset>
-                        <legend><fmt:message key="page.login.forgot.password"/></legend>
-                        <fmt:message key="page.login.forgot.password.button" var="requestNewPasswordButtonText"/>
-
-                        <label for="requestNewPasswordButton"><fmt:message key="page.login.forgot.password.label"/></label>
-                        <div class="controls">
-                            <button class="btn btn-primary" id="requestNewPasswordButton" type="submit" value="${requestNewPasswordButtonText}">${requestNewPasswordButtonText}</button>
-                        </div>
-                    </fieldset>
-                </form>
-                    <%--
-                     //############################################
-                     // ACCOUNT REMINDER
-                     //############################################
-                    --%>
-                <form class="form-horizontal well" action="<c:url value="/app/retrieveusername"/>" method="get">
-                    <fieldset>
-                        <legend><fmt:message key="page.login.forgot.username"/></legend>
-                        <label for="requestNewUsernameButton"><fmt:message key="page.login.forgot.username.label"/></label>
-                        <fmt:message key="page.login.forgot.username.button" var="requestNewUsernameButton"/>
-                        <div class="controls">
-                            <button class="btn btn-primary" id="requestNewUsernameButton" type="submit" value="${requestNewUsernameButton}">${requestNewUsernameButton}</button>
-                        </div>
-                    </fieldset>
-                </form>
-
-                    <%--
-                      //############################################
-                      // NEW ACCOUNT REQUEST
-                      //############################################
-                    --%>
-                <form class="form-horizontal well" action="<c:url value="/app/newaccount.jsp"/>" method="get">
-                    <fieldset>
-                        <legend><fmt:message key="page.login.createaccount"/></legend>
-                        <label for="createNewAccountButton"><fmt:message key="page.login.createaccount.label"/></label>
-                        <fmt:message key="page.login.createaccount.button" var="createAccountButtonText"/>
-                        <div class="controls">
-                            <button class="btn btn-primary" id="createNewAccountButton" type="submit" value="${createAccountButtonText}">${createAccountButtonText}</button>
-                        </div>
-                    </fieldset>
-                </form>
             </div>
         </div>
     </tiles:putAttribute>
