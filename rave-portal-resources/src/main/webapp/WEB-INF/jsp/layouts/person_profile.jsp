@@ -18,19 +18,23 @@
   under the License.
   --%>
 <div id="personProfileSubPages">
-    <ul>
-        <!-- first render the tabs -->
-        <c:forEach var="subPage" items="${page.subPages}" varStatus="subPageStatus">
-            <li><a href="#subpage-${subPage.entityId}"><c:out value="${subPage.name}"/></a></li>
-        </c:forEach>
-    </ul>
-    <!-- now render the sub page bodies -->
-    <c:forEach var="subPage" items="${page.subPages}" varStatus="subPageStatus">
-        <div id="subpage-${subPage.entityId}">
-            <c:forEach var="subPageRegion" items="${subPage.regions}" varStatus="subPageRegionStatus">
-                <rave:region region="${subPageRegion}" regionIdx="${subPageRegionStatus.count}" />
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <!-- first render the tabs -->
+            <c:forEach var="subPage" items="${page.subPages}" varStatus="subPageStatus">
+                <li><a data-toggle="tab" href="#subpage-${subPage.entityId}"><c:out value="${subPage.name}"/></a></li>
             </c:forEach>
-            <div class="clear-float">&nbsp;</div>
+        </ul>
+
+        <div class="tab-content">
+            <!-- now render the sub page bodies -->
+            <c:forEach var="subPage" items="${page.subPages}" varStatus="subPageStatus">
+                <div class="tab-pane" id="subpage-${subPage.entityId}">
+                    <c:forEach var="subPageRegion" items="${subPage.regions}" varStatus="subPageRegionStatus">
+                        <rave:region region="${subPageRegion}" regionIdx="${subPageRegionStatus.count}"/>
+                    </c:forEach>
+                </div>
+            </c:forEach>
         </div>
-    </c:forEach>
+    </div>
 </div>

@@ -73,8 +73,8 @@
 </header>
 
 <div class="container-fluid navbar-spacer">
-    <div id="person-profile-left">
-        <div id="personProfileContent">
+    <div class="row-fluid">
+        <div  class="span6 hero-unit">
             <form:form cssClass="form-horizontal" id="editAccountForm" commandName="userProfile" action="person?referringPageId=${referringPageId}" method="POST">
                 <!-- Display personal information of user-->
                 <h2><fmt:message key="page.profile.personal.info"/></h2>
@@ -139,22 +139,23 @@
         </div>
 
         <%--render the sub pages --%>
-        <div id="pageContent" class="person-profile-page-content">
+        <div id="pageContent">
             <div class="regions">
                 <%-- insert the region layout template --%>
                 <tiles:insertTemplate template="${layout}"/>
             </div>
-            <div class="clear-float">&nbsp;</div>
+
         </div>
+        <%--<div id="person-profile-right">
+            <div>
+                &lt;%&ndash; render the person profile parent page region/widgets &ndash;%&gt;
+                <c:forEach var="region" items="${page.regions}" varStatus="status">
+                    <rave:region region="${region}" regionIdx="${status.count}"/>
+                </c:forEach>
+            </div>
+        </div>--%>
     </div>
-    <div id="person-profile-right">
-        <div>
-            <%-- render the person profile parent page region/widgets --%>
-            <c:forEach var="region" items="${page.regions}" varStatus="status">
-                <rave:region region="${region}" regionIdx="${status.count}"/>
-            </c:forEach>
-        </div>
-    </div>
+
 </div>
 
 <script>
