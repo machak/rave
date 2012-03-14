@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
@@ -7,7 +8,7 @@
   "License"); you may not use this file except in compliance
   with the License.  You may obtain a copy of the License at
 
-      http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing,
   software distributed under the License is distributed on an
@@ -16,17 +17,7 @@
   specific language governing permissions and limitations
   under the License.
   -->
-
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
-
-    <bean id="dataSourcePopulator" class="org.apache.rave.jdbc.util.DataSourcePopulator">
-        <property name="executeScriptQuery" value="SELECT * FROM WIDGET"/>
-        <property name="scriptLocations">
-            <list>
-                <value>classpath:test-data.sql</value>
-            </list>
-        </property>
-    </bean>
-</beans>
+<tomcat-users>
+<role rolename="widgetadmin"/>
+<user username="java" password="java" roles="widgetadmin"/>
+</tomcat-users>
