@@ -37,8 +37,7 @@
     </h2>
 
     <div class="rightcolumn">
-        <c:if
-                test="${not empty widget.screenshotUrl or not empty widget.thumbnailUrl}">
+        <c:if test="${not empty widget.screenshotUrl or not empty widget.thumbnailUrl}">
             <section class="formbox"><c:if
                     test="${not empty widget.screenshotUrl}">
                 <figure class="screenshot"><img
@@ -61,8 +60,7 @@
             <h3>
                 <fmt:message key="admin.widgetdetail.editdata"/>
             </h3>
-            <form:form id="updateWidget" action="update" commandName="widget"
-                       method="POST">
+            <form:form cssClass="form-horizontal well" id="updateWidget" action="update" commandName="widget" method="POST">
                 <form:errors cssClass="error" element="p"/>
                 <fieldset>
                     <input type="hidden" name="token"

@@ -31,6 +31,16 @@
     <div class="span11">
       <div class="span11">
 
+        <c:if test="${actionresult eq 'delete' or actionresult eq 'update'}">
+          <div class="alert alert-info">
+            <p>
+              <fmt:message key="admin.userdetail.action.${actionresult}.success"/>
+            </p>
+          </div>
+        </c:if>
+        <c:if test="${not empty message}">
+          <div class="alert alert-info"><p>${message}</p></div>
+        </c:if>
         <form class="well form-search" action="<spring:url value="/app/admin/users/search"/>" method="get">
           <fieldset>
             <label for="searchTerm"><fmt:message key="admin.users.search"/></label>
@@ -42,20 +52,12 @@
         <c:if test="${not empty searchTerm}">
           <a class="btn btn-success" href="<spring:url value="/app/admin/users"/>"><fmt:message key="admin.clearsearch"/></a>
         </c:if>
-        <div class="well"><a class="btn btn-success" href="<spring:url value="/app/admin/adduser"/>"><fmt:message key="admin.users.add"/></a></div>
+        <div class="well">
+          <a class="btn btn-success" href="<spring:url value="/app/admin/adduser"/>"><fmt:message key="admin.users.add"/></a>
+        </div>
 
       </div>
       <article class="span11">
-        <c:if test="${actionresult eq 'delete' or actionresult eq 'update'}">
-          <div class="alert alert-info">
-            <p>
-              <fmt:message key="admin.userdetail.action.${actionresult}.success"/>
-            </p>
-          </div>
-        </c:if>
-        <c:if test="${not empty message}">
-          <div class="alert alert-info"><p>${message}</p></div>
-        </c:if>
 
 
         <rave:admin_listheader/>

@@ -57,7 +57,12 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset>${captchaHtml}</fieldset>
+                      <fieldset>
+                        <div class="control-group">
+                          <div class="controls">${captchaHtml}</div>
+                        </div>
+                      </fieldset>
+
                         <fieldset>
                             <fmt:message key="page.login.forgot.username.button" var="submitButtonText"/>
                             <button class="btn btn-primary" type="submit" value="${submitButtonText}">${submitButtonText}</button>
