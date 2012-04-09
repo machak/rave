@@ -26,10 +26,9 @@
     <parent>
         <groupId>org.apache.rave</groupId>
         <artifactId>rave-project</artifactId>
-        <version>0.10-incubating-SNAPSHOT</version>
+        <version>0.11-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.apache.rave</groupId>
     <artifactId>rave-portal</artifactId>
     <name>Apache Rave :: rave-portal</name>
     <description>Apache Rave Portal</description>
@@ -51,7 +50,6 @@
     	<dependency>
             <groupId>org.apache.wookie</groupId>
             <artifactId>wookie</artifactId>
-            <version>0.9.2-incubating</version>
             <type>war</type>
             <scope>provided</scope>
         </dependency>
@@ -150,14 +148,14 @@
                         </properties>
                         <home>${project.build.directory}/tomcat6x</home>
                         <deployables>
-	                        <deployable>
-		                        <groupId>org.apache.wookie</groupId>
-		                        <artifactId>wookie</artifactId>
-		                        <type>war</type>
-		                        <properties>
-			                        <context>/wookie</context>
-		                        </properties>
-	                       </deployable>
+                            <deployable>
+                                <groupId>org.apache.wookie</groupId>
+                                <artifactId>wookie</artifactId>
+                                <type>war</type>
+                                <properties>
+                                    <context>/wookie</context>
+                                </properties>
+                           </deployable>
                             <deployable>
                                 <groupId>org.apache.rave</groupId>
                                 <artifactId>rave-shindig</artifactId>
@@ -184,6 +182,13 @@
                                 </properties>
                             </deployable>
                         </deployables>
+                        <configfiles>
+                            <configfile>
+                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/conf/tomcat-users.xml</file>
+                                <todir>conf/</todir>
+                                <tofile>tomcat-users.xml</tofile>
+                            </configfile>
+                        </configfiles>
                     </configuration>
                     <container>
                         <containerId>tomcat6x</containerId>
@@ -196,7 +201,7 @@
                         </zipUrlInstaller>
                         <systemProperties>
                             <net.sf.ehcache.skipUpdateCheck>true</net.sf.ehcache.skipUpdateCheck>
-                            <!-- Documentation: http://incubator.apache.org/rave/documentation/host-configuration.html -->
+                            <!-- Documentation: http://rave.apache.org/documentation/host-configuration.html -->
                             <!--
                                 <portal.override.properties>/path/to/custom.portal.properties</portal.override.properties>
                                 <rave-shindig.override.properties>/path/to/custom.shindig.properties</rave-shindig.override.properties>

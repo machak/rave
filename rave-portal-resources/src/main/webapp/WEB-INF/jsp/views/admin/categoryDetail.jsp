@@ -34,7 +34,6 @@
         </ul>
         <h2><c:out value="${category.text}"/></h2>
 
-
         <section class="span6">
             <h3><fmt:message key="admin.delete"/><c:out value=" ${category.text}"/></h3>
             <form:form id="deleteCategory" action="delete" commandName="category" method="POST">
@@ -59,7 +58,6 @@
                 </fieldset>
             </form:form>
         </section>
-
 
     </article>
     <section class="span3">

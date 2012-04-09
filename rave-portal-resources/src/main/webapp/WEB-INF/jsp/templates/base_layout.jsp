@@ -19,49 +19,16 @@ under the License.
 <%@ page language="java" trimDirectiveWhitespaces="true" %>
 <%@ page errorPage="/WEB-INF/jsp/views/error.jsp" %>
 <%@ include file="/WEB-INF/jsp/includes/taglibs.jsp" %>
-<fmt:setBundle basename="messages"/>
 <%-- Expose any attributes defined in the tiles-defs.xml to the request scope for use in other tiles --%>
 <tiles:importAttribute scope="request"/>
-<c:set var="profileTitleKey" value="page.profile.title" />
-<c:set var="personProfileTitleKey" value="page.personProfile.title" />
-<%--@elvariable id="page" type="org.apache.rave.portal.model.Page"--%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1"/>
     <meta name="viewport" content="width=device-width" />
-    <title>
-        <%-- determine if this is a user page, and if so, display the page name in the HTML title --%>
-        <c:choose>
-            <c:when test="${not empty page}">
-                <c:out value="${page.name}" escapeXml="true" />
-            </c:when>
-            <c:when test="${pageTitleKey == profileTitleKey}">
-            	<fmt:message key="${pageTitleKey}">
-   					<fmt:param><c:out value="${userProfile.displayName}" /></fmt:param>
-				</fmt:message>
-            </c:when>
-            <c:when test="${pageTitleKey == personProfileTitleKey}">
-            	<fmt:message key="${pageTitleKey}">
-   					<fmt:param><c:out value="${userProfile.displayName}" /></fmt:param>
-				</fmt:message>
-            </c:when>
-            <c:otherwise>
-                <fmt:message key="${pageTitleKey}"/>
-            </c:otherwise>
-        </c:choose>
-        <c:if test="${not empty portalSettings and not empty portalSettings['titleSuffix']}">
-            <c:out value="${portalSettings['titleSuffix'].value}"/>
-        </c:if>
-    </title>
-    <%--<link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.13/themes/base/jquery-ui.css"/>--%>
-    <link rel="stylesheet" href="<c:url value="/css/default.css" />"/>
-    <link rel="stylesheet" href="<c:url value="/css/bootstrap/css/bootstrap.css" />"/>
-    <link rel="stylesheet" href="<c:url value="/css/rave.css" />"/>
+    <title><rave:title /></title>
+    <rave:rave_css/>
     <rave:custom_css/>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
 </head>
 <body>
 <%-- Header Content --%>
@@ -70,5 +37,13 @@ under the License.
 <tiles:insertAttribute name="body"/>
 <%-- Footer Content --%>
 <tiles:insertAttribute name="footer"/>
+<%-- render any script that needs to execute pre-src includes --%>
+<portal:render-init-script location="${'BEFORE_RAVE'}" />
+<%-- render the javascript src includes at the bottom of the page for performance --%>
+<rave:rave_js/>
+<%-- render custom javascript from extension projects if the tag is overlayed --%>
+<rave:custom_js/>
+<%-- render any script that needs to execute post-src includes --%>
+<portal:render-init-script location="${'AFTER_RAVE'}" />
 </body>
 </html>

@@ -22,8 +22,6 @@
 
 <fmt:message key="${pageTitleKey}" var="pagetitle"/>
 <rave:header pageTitle="${pagetitle}"/>
-\
-<
 <div class="container-fluid">
     <div class="span3">
         <rave:admin_tabsheader/>
@@ -36,7 +34,6 @@
         </ul>
 
         <h2><fmt:message key="admin.preferences.shorttitle"/></h2>
-
 
         <section class="span6">
             <spring:url value="/app/admin/preferencedetail/update" var="formAction"/>
@@ -59,6 +56,18 @@
                             <input id="pageSize" name="pageSize.value" type="number" step="1" value="<c:out value="${status.value}"/>"/>
                         </spring:bind>
                         <form:errors path="pageSize.value" cssClass="error"/>
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <p>
+                        <spring:bind path="javaScriptDebugMode.value">
+                            <form:label path="javaScriptDebugMode.value"><fmt:message key="admin.preferencedetail.javaScriptDebugMode"/> *</form:label>
+                            <form:select id="javaScriptDebugMode" path="javaScriptDebugMode.value">
+                                <form:option value="0"><fmt:message key="admin.preferencedetail.javaScriptDebugMode.false"/></form:option>
+                                <form:option value="1"><fmt:message key="admin.preferencedetail.javaScriptDebugMode.true"/></form:option>
+                            </form:select>
+                            <form:errors path="javaScriptDebugMode.value" cssClass="error"/>
+                        </spring:bind>
                     </p>
                 </fieldset>
                 <fieldset>
