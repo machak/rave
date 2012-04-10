@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.apache.rave</groupId>
         <artifactId>rave-master</artifactId>
-        <version>0.8-incubating</version>
+        <version>0.10</version>
         <relativePath>../rave-master-pom/pom.xml</relativePath>
     </parent>
 
@@ -35,16 +35,17 @@
     <name>Apache Rave :: rave-project</name>
     <description>Apache Rave Project</description>
     <packaging>pom</packaging>
-    <version>0.10-incubating-SNAPSHOT</version>
+    <version>0.11-SNAPSHOT</version>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/incubator/rave/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/incubator/rave/trunk</developerConnection>
-        <url>http://svn.apache.org/viewvc/incubator/rave/trunk/</url>
+        <connection>scm:svn:http://svn.apache.org/repos/asf/rave/trunk</connection>
+        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/rave/trunk</developerConnection>
+        <url>http://svn.apache.org/viewvc/rave/trunk/</url>
     </scm>
 
     <properties>
         <apache.shindig.version>3.0.0-beta4</apache.shindig.version>
+        <apache.wookie.version>0.9.2-incubating</apache.wookie.version>
         <org.springframework.version>3.1.0.RELEASE</org.springframework.version>
         <org.springframework.mobile.version>1.0.0.M3</org.springframework.mobile.version>
         <jstl.version>1.2</jstl.version>
@@ -122,7 +123,12 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.rave</groupId>
-                <artifactId>rave-opensocial-provider</artifactId>
+                <artifactId>rave-opensocial-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rave</groupId>
+                <artifactId>rave-opensocial-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -178,6 +184,17 @@
                 <artifactId>shindig-gadgets</artifactId>
                 <scope>test</scope>
                 <version>${apache.shindig.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.wookie</groupId>
+                <artifactId>wookie</artifactId>
+                <version>${apache.wookie.version}</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.wookie</groupId>
+                <artifactId>wookie-java-connector</artifactId>
+                <version>${apache.wookie.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -671,7 +688,6 @@
         <module>rave-providers</module>
         <module>rave-portal-resources</module>
         <module>rave-portal-dependencies</module>
-        <module>rave-shindig</module>
         <module>rave-demo-gadgets</module>
         <module>rave-portal</module>
     </modules>

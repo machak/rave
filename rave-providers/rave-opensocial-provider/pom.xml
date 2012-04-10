@@ -26,72 +26,18 @@
     <parent>
         <artifactId>rave-providers</artifactId>
         <groupId>org.apache.rave</groupId>
-        <version>0.10-incubating-SNAPSHOT</version>
+        <version>0.11-SNAPSHOT</version>
     </parent>
 
     <artifactId>rave-opensocial-provider</artifactId>
     <name>Apache Rave :: rave-opensocial-provider</name>
     <description>Apache Rave OpenSocial Provider</description>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.rave</groupId>
-            <artifactId>rave-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.rave</groupId>
-            <artifactId>rave-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!--Persistence-->
-        <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.easymock</groupId>
-            <artifactId>easymock</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>rave-opensocial-client</module>
+        <module>rave-opensocial-core</module>
+        <module>rave-opensocial-server</module>
+    </modules>
 
 </project>

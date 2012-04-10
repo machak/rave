@@ -115,7 +115,6 @@
       </c:if>
 
 
-
     </fieldset>
   </form>
 
@@ -351,5 +350,10 @@
   $(function () {
     rave.setContext("<spring:url value="/app/" />");
     rave.store.init('<c:out value="${referringPageId}"/>');
-  });
-</script>
+<portal:register-init-script location="${'AFTER_RAVE'}">
+    <script>
+        $(function () {
+            rave.store.init('<c:out value="${referringPageId}"/>');
+        });
+    </script>
+</portal:register-init-script>

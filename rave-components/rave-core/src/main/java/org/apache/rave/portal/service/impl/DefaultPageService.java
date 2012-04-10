@@ -29,6 +29,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +82,7 @@ public class DefaultPageService implements PageService {
         List<Page> profilePages = pageRepository.getAllPages(userId, PageType.PERSON_PROFILE);
         Page personPage = null;
         if (profilePages.isEmpty()){
-            personPage = pageRepository.createPersonPageForUser(userService.getUserById(userId),pageTemplateRepository.getDefaultPersonPage());
+            personPage = pageRepository.createPageForUser(userService.getUserById(userId), pageTemplateRepository.getDefaultPage(PageType.PERSON_PROFILE));
         } else {
             personPage = profilePages.get(0);
         }
@@ -389,7 +391,7 @@ public class DefaultPageService implements PageService {
 
     private Page addNewUserPage(User user, String pageName, String pageLayoutCode) {
         PageLayout pageLayout = pageLayoutRepository.getByPageLayoutCode(pageLayoutCode);
-        
+
         // Create regions
         List<Region> regions = new ArrayList<Region>();
         int regionCount;
@@ -401,10 +403,26 @@ public class DefaultPageService implements PageService {
             regions.add(region);
         }
 
-        // Create a Page object and register it.
-        long renderSequence = getAllUserPages(user.getEntityId()).size() + 1;
-        Page page = new Page();
-        page.setName(pageName);       
+        // Get all User Pages
+        Page page = null;
+        List<Page> defaultUserPage = pageRepository.getAllPages(user.getEntityId(), PageType.USER);
+        // Is there a default page for this user
+        if (defaultUserPage.isEmpty()) {
+            // Do we have a default User template defined, if so create the page based on the template
+            try {
+                return pageRepository.createPageForUser(user, pageTemplateRepository.getDefaultPage(PageType.USER));
+            } catch ( NoResultException nre ) {
+                // There are no default user page template records in DB
+            } catch ( NonUniqueResultException nue ) {
+                // There are more than 1 default user page template records in DB
+            }
+        }
+
+        // If we have a page already or if there was an exception from above then create the page
+        // Create the new page for the user
+        long renderSequence = defaultUserPage.size() + 1;
+        page = new Page();
+        page.setName(pageName);
         page.setOwner(user);
         page.setPageLayout(pageLayout);
         page.setRenderSequence(renderSequence);
@@ -412,7 +430,6 @@ public class DefaultPageService implements PageService {
         // set this as a "user" page type
         page.setPageType(PageType.USER);
         pageRepository.save(page);
-        
         return page;
     }
 
